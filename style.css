@@ -50,7 +50,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 8px;
 }
 
 .flex-col {
@@ -63,11 +62,13 @@
     /* aspect-ratio: 1/1; */
     border: 1px solid rgba(175, 175, 175, 0.322);
 }
+
 #container {
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
     gap: 1px;
     justify-content: flex-start;
+    align-content: flex-start;
 }
 
