@@ -6,6 +6,7 @@ const ETch = {
     },
     container: {},
     grid_size: 16,
+    max_grid_size: 100,
     turns: 5,
     winnerMat : {
         rock: {scissors: 'win', paper: 'lose', rock: 'draw'},
@@ -84,12 +85,11 @@ const ETch = {
         square.style.height = this.getSquareSize();
         return square;
     },
-    /**
-     * Adds events and init score dom elements
-     */
-    init(){
-        const container = document.querySelector('#container');
-        this.container = container;
+    createGrid(){
+        let container = this.container;
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+          }
         let grid_size = this.grid_size;
         const square = this.getSquare();
         for(let i = 0; i < grid_size; i++)
@@ -97,7 +97,24 @@ const ETch = {
                 container.append(square.cloneNode());
         
         
-        
+    },
+    /**
+     * Adds events and init score dom elements
+     */
+    init(){
+        const container = document.querySelector('#container');
+        this.container = container;
+        this.createGrid();
+
+        const btn_size = document.querySelector('#set-size');
+        btn_size.addEventListener('click', () => {
+            let gsize = parseInt(prompt('Please enter grid size: (max 100)'));
+            gsize = Math.min(gsize, this.max_grid_size);
+            this.grid_size = gsize;
+            this.createGrid();
+        });
+
+        window.addEventListener('resize', () => this.createGrid());
 
         
     },
