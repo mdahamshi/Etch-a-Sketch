@@ -32,7 +32,6 @@
 .sb-button{
     background-color: var(--sb-button-color);
     color: white;
-    /* display: inline-block; */
     display: inline-block;
     border: 0;
     padding: 8px 8px;
@@ -59,8 +58,8 @@
     gap: 8px;
 }
 .sb-square {
-    /* aspect-ratio: 1/1; */
     border: 1px solid rgba(175, 175, 175, 0.322);
+    opacity: 0;
 }
 
 #container {

@@ -8,13 +8,25 @@ const ETch = {
 
         return this.squareSize + 'px';
     },
+
+    getRandomColor(){
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    },
+
     getSquare(){
         const square = document.createElement('div');
         square.classList.add('sb-square');
         square.style.width = this.getSquareSize();
         square.style.height = this.getSquareSize();
         square.addEventListener('mouseover', (e) => {
-            square.style.backgroundColor = '#000000';
+            square.style.backgroundColor = this.getRandomColor();
+            let current = parseFloat(square.style.opacity) || 0;
+            if (current < 1) {
+                square.style.opacity = Math.min(current + 0.1, 1); // max 1
+              }
 
         });
         return square;
